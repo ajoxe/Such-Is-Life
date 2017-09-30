@@ -112,7 +112,7 @@ public class Game extends Deck {
                 + player.evaluation);
         System.out.println("You gain " + player.getOpportunities() + " Opportunity points! \n");
 
-        //TODO: implement as such
+        //TODO: implement next steps as such
         //levelCard("Intelligence", "mind");
 
     }
