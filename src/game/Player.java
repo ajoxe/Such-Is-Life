@@ -6,11 +6,12 @@ public class Player extends Deck {
     static String name;
     static int score;
     static ArrayList<Card> handDealt = new ArrayList<>();
-    static int parents = 2;
     int shuffleCount;
-    static ArrayList<Card> check = new ArrayList<>();
     String evaluation = "";
     static int opportunities = 0;
+    static int opportunity = 0;
+
+
 
     public ArrayList<Card> handDealt(int a) {
         buildDeck();
@@ -23,7 +24,6 @@ public class Player extends Deck {
             shuffledDeck.remove(a);
         }
         shuffledDeck.addAll(handDealt);
-
         return handDealt;
     }
 
@@ -31,28 +31,38 @@ public class Player extends Deck {
         switch (score){
             case 1: case 2: case 3:
                 score = 25;
-                evaluation ="The Worst";
-                opportunities += 1;
+                evaluation ="The Worst!";
+                setOpportunity(-5);
+                opportunities -= 5;
                 break;
             case 4: case 5: case 6:
                 score = 50;
-                evaluation ="Not great. Not the Worst, but definitely Not Great";
-                opportunities += 3;
+                evaluation ="Not great. Not the Worst, but definitely Not Great...";
+                setOpportunity(2);
+                opportunities += 2;
                 break;
             case 7: case 8: case 9:
                 score = 75;
                 evaluation ="Okay, I guess...";
+                setOpportunity(5);
                 opportunities += 5;
                 break;
-            case 10: case 11: case 13:
+            case 10: case 11: case 12: case 13:
                 score = 100;
                 evaluation ="The Best!!!";
+                setOpportunity(10);
                 opportunities += 10;
                 break;
-
-
         }
        return score;
+    }
+
+    public static int getOpportunity() {
+        return opportunity;
+    }
+
+    public static void setOpportunity(int opportunity) {
+        Player.opportunity = opportunity;
     }
 
     public String getEvaluation() {
@@ -69,14 +79,6 @@ public class Player extends Deck {
 
     public void setOpportunities(int opportunities) {
         this.opportunities = opportunities;
-    }
-
-    public static int getParents() {
-        return parents;
-    }
-
-    public static void setParents(int parents) {
-        Player.parents = parents;
     }
 
     public int getShuffleCount() {
@@ -110,6 +112,8 @@ public class Player extends Deck {
     public static void setHandDealt(ArrayList<Card> handDealt) {
         Player.handDealt = handDealt;
     }
+
+    //changes, delete this later
 
 
 }
